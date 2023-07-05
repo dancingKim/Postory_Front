@@ -173,7 +173,7 @@ export default function ChannelWebtoon() {
 
 
   return (
-    <ChannelTemplate chnlUri={data.data.channel.chnlUri} >
+    <ChannelTemplate>
       <SectionHeader>
         <span>{data.data.channel.chnlWebtoonCnt}개의 포스트</span>
         <SectionHeaderFilter>최신순 | 인기순</SectionHeaderFilter>

@@ -53,20 +53,20 @@ export default function ChannelTemplate(p) {
 
   const mainNavLinks = [
     {
-      to: `/channel/${encodeURIComponent(p.chnlUri)}`,
+      to: `/channel/${encodeURIComponent(chnlUri)}`,
       children: '홈',
       end: true,
     },
     {
-      to: `/channel/${encodeURIComponent(p.chnlUri)}/webtoon`,
+      to: `/channel/${encodeURIComponent(chnlUri)}/webtoon`,
       children: '웹툰',
     },
     {
-      to: `/channel/${encodeURIComponent(p.chnlUri)}/webnovel`,
+      to: `/channel/${encodeURIComponent(chnlUri)}/webnovel`,
       children: '웹소설',
     },
     {
-      to: `/channel/${encodeURIComponent(p.chnlUri)}/about`,
+      to: `/channel/${encodeURIComponent(chnlUri)}/about`,
       children: '소개',
     },
   ];
@@ -82,7 +82,7 @@ export default function ChannelTemplate(p) {
           {data.data.channel.chnlPostCnt}개
         </CountInfo>
         <ChannelTitle>{data.data.channel.chnlTtl}</ChannelTitle>
-        {/* 
+        {/*
         // TODO: 구독하기 버튼 처리
         <div>
           구독하기 버튼

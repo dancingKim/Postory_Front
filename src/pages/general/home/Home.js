@@ -19,6 +19,9 @@ export default function Home() {
         <NavLink to={"channel/buksan"}>
           <h1>BUKSAN 채널 바로가기</h1>
         </NavLink>
+        <NavLink to={"post/create"}>
+          <h1>POST CREATE 바로가기</h1>
+        </NavLink>
         </div>
       </div>
     </HomeTemplate>

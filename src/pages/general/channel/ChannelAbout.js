@@ -98,7 +98,7 @@ export default function ChannelAbout() {
     return null;
   }
   return (
-    <ChannelTemplate chnlUri={data.data.channel.chnlUri}>
+    <ChannelTemplate>
       <ContentContainer>
         <ChannelSection>
           <RecThumnail imageUrl={data.data.channel.chnlImgPath}></RecThumnail>

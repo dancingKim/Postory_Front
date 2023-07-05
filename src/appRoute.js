@@ -24,6 +24,7 @@ import ChannelHome from './pages/general/channel/ChannelHome';
 import ChannelWebtoon from './pages/general/channel/ChannelWebtoon';
 import ChannelWebnovel from './pages/general/channel/ChannelWebnovel';
 import ChannelAbout from './pages/general/channel/ChannelAbout';
+import PostCreate from './pages/general/create/PostCreate';
 
 const urls = {
   login: '/login',
@@ -71,6 +72,9 @@ const urls = {
   profile: `/profile/:nic`,
   profilePost: `/profile/:nic/post`,
   profileSeries: `/profile/:nic/series`,
+
+  // crate
+  postCreate: `/post/create`,
 };
 
 // Links
@@ -168,4 +172,7 @@ export const pageRoutes = [
   { id: 28, path: urls.channelWebtoon, element: <ChannelWebtoon /> },
   { id: 29, path: urls.channelWebnovel, element: <ChannelWebnovel /> },
   { id: 30, path: urls.channelAbout, element: <ChannelAbout /> },
+
+  // create
+  { id: 31, path: urls.postCreate, element: <PostCreate /> },
 ];

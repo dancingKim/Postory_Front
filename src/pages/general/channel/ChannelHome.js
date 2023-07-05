@@ -6,7 +6,6 @@ import { useApiGet } from '../../../hooks/useApi';
 import PostItem from '../../../components/organisms/general/PostItem';
 import NoContent from '../../../components/molecules/error/NoContent';
 import BtnLinkSC from '../../../components/atoms/Link/BtnLinkSC';
-import Nav from '../../../components/organisms/general/Nav';
 
 const SectionHeader = styled.div`
   padding: 0 0 10px;
@@ -97,7 +96,7 @@ export default function ChannelHome() {
 
 
   return (
-    <ChannelTemplate chnlUri={data.data.channel.chnlUri} >
+    <ChannelTemplate>
       <SectionHeader>
         <span>웹툰</span>
        <NavLink to={`/channel/${data.data.channel.chnlUri}/webtoon`} >{">"}</NavLink>
@@ -124,8 +123,6 @@ export default function ChannelHome() {
                <WebtoonCount>
                 21시간 전
               </WebtoonCount>
-
-
             </WebtoonSubInfo>
           </WebtoonListItem>
         ))}

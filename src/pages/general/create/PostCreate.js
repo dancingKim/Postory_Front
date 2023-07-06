@@ -12,13 +12,16 @@ import ReactQuill, {Quill} from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import TextInputSC from '../../../components/atoms/Input/TextInputSC';
 import ImageResize from 'quill-image-resize';
+import PostRadioButton from '../../../components/molecules/post/PostRadioButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faImage, faUser } from '@fortawesome/free-solid-svg-icons';
+import PostImg from '../../../components/atoms/Post/PostImgSC';
 
 Quill.register('modules/imageResize', ImageResize);
-
 export const SubmitButton = styled.button`
   display: block;
   width: fit-content;
-  padding: 7px 15px;
+  padding: 8px 30px;
   font-size: 15px;
   border-radius: 4px;
   font-weight: normal;
@@ -26,6 +29,8 @@ export const SubmitButton = styled.button`
   background-color: #3478FF;
   border: 1px solid #3478FF;
 `;
+
+
 
 export default function PostCreate() {
   // const { user } = useUserStore();
@@ -45,6 +50,8 @@ export default function PostCreate() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [subTitle, setSubTitle] = useState('');
+  const [thumbnailImageUrl, setThumbnailImageUrl] = useState(null);
+  const [postType, setPostType] = useState('');
   // const modules = {
   //   toolbar: [
   //     ['bold', 'italic', 'underline', 'strike'], // 텍스트 스타일
@@ -84,29 +91,55 @@ export default function PostCreate() {
     setSubTitle(event.target.value);
   }
 
+  const handleThumbnailImageUrlChange = (event) =>{
+    setThumbnailImageUrl(event.target.value);
+  };
+
+  const handleOptionChange = (event) => {
+    setPostType(event.target.value);
+  };
+
   const handleEditorChange = (value) => {
     setContent(value);
   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    // 여기에서 포스트를 작성하거나 전송하는 로직을 추가할 수 있습니다
-    console.log('제목:', title);
-    console.log('부제목', subTitle);
-    console.log('내용:', content);
+
+    // 선택한 postType 값과 기타 필요한 데이터를 API로 전송합니다.
+    const postData = {
+      postType: postType,
+      postTtl: title,
+      postSbTtl: subTitle,
+      postContent: content,
+      postThumnPath: thumbnailImageUrl,
+    };
+
+    // API 호출 등의 로직을 추가합니다.
+    // 예: axios.post('/api/posts', postData)
+    console.log('전송할 데이터:', postData);
   };
+
+  const options = [
+    { label: '웹툰', value: '웹툰' },
+    { label: '웹소설', value: '웹소설' },
+
+  ];
 
 
   return (
     <CreateTemplate>
       <div>
         <form onSubmit={handleFormSubmit}>
-          {/*<input*/}
-          {/*  type="text"*/}
-          {/*  id="title"*/}
-          {/*  value={title}*/}
-          {/*  onChange={handleTitleChange}*/}
-          {/*/>*/}
+          <h3 style={{ marginBottom : '30px' }}>포스트 작성하기</h3>
+
+          <p style={{ marginBottom : '10px' }}>포스트 타입</p>
+          <PostRadioButton
+            options={options}
+            selectedOption={postType}
+            handleOptionChange={handleOptionChange}
+          />
+          <div style={{ height: '20px' }}></div>
 
           <TextInputSC
             type="text"
@@ -126,11 +159,36 @@ export default function PostCreate() {
             onKeyDown={handleSubTitleChange}
           />
 
-          <div style={{ height: '500px', margin: '50px 0' }}>
+          <div style={{ margin: '20px'}}></div>
+
+          <div style={{ position: 'relative'}}>
+            <PostImg>
+            </PostImg>
+            <label className="post-thumnImg-label" htmlFor="postThumnImg">썸네일 이미지 추가</label>
+            <input
+              className="post-thumnImg-input"
+              type="file"
+              accept="image/*"
+              id="postThumImg"
+            />
+            <FontAwesomeIcon icon={faImage} style={{position: 'absolute', top: '12px', left: '5px'}}/>
+            <TextInputSC
+              style={{ paddingLeft: '24px'}}
+              type="text"
+              placeholder="썸네일 이미지 url"
+              value={thumbnailImageUrl}
+              onChange={handleThumbnailImageUrlChange}
+              onKeyDown={handleThumbnailImageUrlChange}
+            />
+          </div>
+
+          <div style={{ height: '500px', margin: '20px 0 50px 0' }}>
             <ReactQuill value={content} onChange={handleEditorChange} style={{ height: '500px' }} modules={modules} formats={formats}/>
           </div>
 
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
           <SubmitButton type="submit">게시</SubmitButton>
+          </div>
         </form>
       </div>
     </CreateTemplate>

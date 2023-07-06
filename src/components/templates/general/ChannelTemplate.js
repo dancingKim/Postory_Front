@@ -7,6 +7,7 @@ import { useApiGet } from '../../../hooks/useApi';
 import { useParams } from 'react-router-dom';
 import useUserStore from '../../../stores/useUserStore';
 import { useEffect, useState } from 'react';
+import BtnLinkSC from '../../atoms/Link/BtnLinkSC';
 
 const Thumbnail = styled.div`
   width: 80px;
@@ -82,11 +83,12 @@ export default function ChannelTemplate(p) {
           {data.data.channel.chnlPostCnt}개
         </CountInfo>
         <ChannelTitle>{data.data.channel.chnlTtl}</ChannelTitle>
-        {/*
-        // TODO: 구독하기 버튼 처리
-        <div>
-          구독하기 버튼
-        </div> */}
+
+        <div style={{ display: 'flex', justifyContent: 'end'}}>
+          {/*// TODO: 구독하기 버튼 처리*/}
+          <BtnLinkSC to="/post/create">구독하기</BtnLinkSC>
+          <BtnLinkSC to="/post/create">포스트 발행하기</BtnLinkSC>
+        </div>
         <Nav>
           <NavMenu navLinks={mainNavLinks} />
         </Nav>

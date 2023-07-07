@@ -72,10 +72,11 @@ export default function PostCreate() {
   const [subTitle, setSubTitle] = useState('');
   const [thumbnailImageUrl, setThumbnailImageUrl] = useState(null);
   const [postType, setPostType] = useState('');
-
+  const [postId, setPostId] = useState(null);
   const [imgFile, setImgFile] = useState("");
   const imgRef = useRef();
   const quillRef = useRef();
+  const imageData = new FormData();
   const {
     res: postRes,
     error: postErr,
@@ -94,7 +95,7 @@ export default function PostCreate() {
     error: uploadErr,
     setError: setUploadErr,
     postData: upload,
-  } = useApiPost(`file/uploadFiles`, new FormData());
+  } = useApiPost(`file/uploadFiles?postId=${postId}`, new FormData());
 
   const imageHandler = () => {
     console.log('에디터에서 이미지 버튼을 클릭하면 이 핸들러가 시작됩니다!');
@@ -112,14 +113,12 @@ export default function PostCreate() {
       console.log('온체인지');
       const files = input.files;
       // multer에 맞는 형식으로 데이터 만들어준다.
-      const formData = new FormData();
       Array.prototype.forEach.call(files, function(file) {
         formData.append('multipartFiles',file);
       });
 
       // 백엔드 라우터에 이미지를 보낸다.
       try {
-        upload(formData);
 
         // const result = await axios.post('http://localhost:4050/img', formData);
 
@@ -235,10 +234,13 @@ export default function PostCreate() {
       postContent: content,
       postThumnPath: thumbnailImageUrl,
     };
-
     // API 호출 등의 로직을 추가합니다.
-    // 예: axios.post('/api/posts', postData)
+
     console.log('전송할 데이터:', postData);
+    post(postData);
+
+    setPostId(postRes.data.data.postId);
+    upload(imageData);
   };
 
   const options = [

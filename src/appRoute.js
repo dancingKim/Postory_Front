@@ -27,6 +27,9 @@ import ChannelAbout from './pages/general/channel/ChannelAbout';
 import PostCreate from './pages/general/create/PostCreate';
 import PostView from './pages/general/view/PostView';
 import SearchWebnovel from './pages/general/search/SearchWebnovel';
+import TestPage from './pages/test/TestPage';
+import TestBoardPage from './pages/test/TestBoardPage';
+import TestUserOne from './pages/test/TestUserOne';
 
 const urls = {
   login: '/login',
@@ -80,6 +83,10 @@ const urls = {
 
   // view
   postView: '/post/:postId',
+
+  testSecurity: `/test/user/all`,
+  testSecurityBaord: `/ttt/ttt`,
+  testUserOne: `test/user/one`,
 };
 
 // Links
@@ -183,4 +190,9 @@ export const pageRoutes = [
 
   // view
   { id: 32, path: urls.postView, element: <PostView /> },
+
+  //test
+  { id: 33, path: urls.testSecurity, element: <TestPage/> },
+  { id: 34, path: urls.testSecurityBaord, element: <TestBoardPage/> },
+  { id: 35, path: urls.testUserOne, element: <TestUserOne/> },
 ];

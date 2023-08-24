@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 export const stickyBox = css`
-  position: sticky;
+  //position: sticky;
   top: 0;
   right: 0;
   left: 0;

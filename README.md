@@ -17,9 +17,9 @@
 
 	처음엔 Spring Legacy를 maven 방식으로 빌드했습니다. 그리고 spring security를  적용했습니다. 그리고 완성한 영역 외에 결제, 멤버십, 상품, 포인트 등 모두 68개 테이블을 설계했었습니다.
 
-	그러나 spring security를 spring legacy 환경에서 김정호(본인)는 사용할 수 있으나,
-	팀이 사용하기 어렵다 판단해 spring boot로 전환했습니다. 프로젝트 완성 기한을 맞추기 위해 앞서 언급한 상당수 기능 구현을 포기했습니다. 더 자세한 이유는 링크로 첨부합니다. 
-	https://lovedprogrammer.tistory.com/2
+	spring security를 spring legacy 환경에서 사용할 수 있게 했으나,
+	팀원 모두가 이해하기엔 어렵다 판단해 spring boot로 전환했습니다. 프로젝트 완성 기한을 맞추기 위해 앞서 언급한 상당수 기능 구현을 포기했습니다. 더 자세한 이유는 링크로 첨부합니다.  
+	https://velog.io/@iamloved5959/Spring-Legacy%EC%99%80-React%EC%97%90%EC%84%9C-spring-security-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0
 
 	최종적으로 사용한 기술은 다음과 같습니다.
 	* Spring Boot
@@ -48,7 +48,7 @@
 		배포를 하기 위해 이용한 서비스입니다. 다른 서비스들보다 현장에서 많이 사용하는 서비스였고, 공식문서와 그외 자료들에 접근하기 쉬웠습니다. 또한 웹툰 웹소설 플랫폼 특성상 많은 트래픽 처리를 하게 될 거라 판단했습니다.  접근성과 중요성, 확장성을 모두 만족하는 서비스이기에 선택했습니다.  
 
 
-2. Front-end
+3. Front-end
 
 	팀원이 3명밖에 되지 않아 재사용성에 초점을 뒀습니다.
 
@@ -57,8 +57,8 @@
 	프로젝트를 기한 내 맞추기 위해 팀원들이 사용할 수 있게 자체 제작 form library를 만들었습니다.  
 	참조하는 POSTYPE 사이트 폼 형식에 패턴을 발견했고, 변수만 바꿔서 사용하면  개발 시간이 단축된다 판단했기 때문입니다.  
 	백엔드 개발자 취업이 목표기에 렌더링 시간은 고려 대상이 아니었기 때문이기도 합니다.  
-	그러나 짧은 시간에 팀원들을 설득하지 못해 사용하지 못했습니다. 자세한 내용은 링크를 첨부합니다.  
-	(첨부할 링크 자료)
+	그러나 짧은 시간에 팀원들을 설득하지 못해 사용하지 못했습니다.  
+	폼 라이브러리 자료는 컴퓨터 백업 문제로 자료가 날라갔습니다. 자료를 복원시키는 즉시 링크를 첨부하겠습니다.
 
 	* React, JSX
 
@@ -97,7 +97,7 @@ develop branch 기준으로 진행해주세요.(main, dev_kjh는 완성본이 �
 
 1. git clone으로 코드를 받아주세요.
    ``` 
-   git clone git clone -b develop https://github.com/dancingKim/Postory_Front.git
+   git clone git clone -b develop https://github.com/dancingKim/postory_back.git
    ```
 
 2. 아직 도메인을 사진 않았습니다. 현재 AWS 계정 비밀번호를 아는 것 외에 프로그램을 로컬에서 실행시킬 수 있는 방법이 없습니다. 추후 도메인을 산 후에 업데이트 하겠습니다.
